@@ -14,7 +14,7 @@ variable "db_username" {
   type        = string
 }
 
-variable "db_password" {
-  description = "xxxxxxx"
-  type        = string
-}
+# variable "db_password" {
+#   description = "He5n4rypha7r2m6a5cy51ED"
+#   type        = string
+# }
