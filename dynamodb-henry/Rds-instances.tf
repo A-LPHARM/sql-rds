@@ -5,9 +5,10 @@ resource "aws_db_instance" "mysql_instance" {
   instance_class          = "db.t2.micro"
   allocated_storage       = 200
   storage_type            = "gp3"
+  availability_zone       = "us-east-1a"
   db_name                 = var.db_name
   username                = var.db_username
-  password                = "He5n4rypha7r2m6a5cy51ED"
+  password                = "Admin123b"
   port                    = 3306
   multi_az                = false
   publicly_accessible     = true

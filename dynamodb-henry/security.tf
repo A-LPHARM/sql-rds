@@ -48,7 +48,7 @@ resource "aws_security_group" "secgrp" {
     from_port      = 22
     to_port        = 22
     protocol       = "tcp"
-    cidr_blocks    = ["0.0.0.0/0"]
+    cidr_blocks    = ["0.0.0.0/0"] # insert your local ip address in bastion host
   }
 
   egress {
@@ -71,7 +71,7 @@ resource "aws_security_group" "webserver-secgrp" {
     from_port         = 80
     to_port           = 80
     protocol          = "tcp"
-    security_groups   = ["${aws_security_group.ssh-secgrp.id}"]
+    cidr_blocks       = ["0.0.0.0/0"]  # security for ec2 instance without bastion host
   }
 
 #  To Allow SSH Transport into the ssh-grp
@@ -79,7 +79,7 @@ resource "aws_security_group" "webserver-secgrp" {
     from_port         = 22
     to_port           = 22
     protocol          = "tcp"
-    security_groups   = ["${aws_security_group.ssh-secgrp.id}"]
+    cidr_blocks       = ["0.0.0.0/0"]
   }
 
  
@@ -104,7 +104,7 @@ resource "aws_security_group" "rds_sg" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    security_groups = ["${aws_security_group.ssh-secgrp.id}"] # Allow inbound traffic from bastion subnet
+    security_groups = ["${aws_security_group.webserver-secgrp.id}"] # Allow inbound traffic from bastion subnet
   }
 
   egress {
