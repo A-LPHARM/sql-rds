@@ -1,6 +1,6 @@
 # Create VPC
 resource "aws_vpc" "henryvpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.1.0.0/16"
   enable_dns_hostnames = true
   tags = {
     name = "testvpc"
@@ -10,7 +10,7 @@ resource "aws_vpc" "henryvpc" {
 # Create Subnet
 resource "aws_subnet" "publicsubnet" {
   vpc_id     = aws_vpc.henryvpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = "10.1.1.0/24"
   availability_zone = "us-east-1a"
   map_public_ip_on_launch = true
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "publicsubnet" {
 
 resource "aws_subnet" "publicsubnet2" {
   vpc_id     = aws_vpc.henryvpc.id
-  cidr_block = "10.0.30.0/24"
+  cidr_block = "10.1.30.0/24"
   availability_zone = "us-east-1b"
   map_public_ip_on_launch = true
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "publicsubnet2" {
 
 resource "aws_subnet" "privatesubnet3" {
   vpc_id     = aws_vpc.henryvpc.id
-  cidr_block = "10.0.50.0/24"
+  cidr_block = "10.1.50.0/24"
   availability_zone = "us-east-1a"
   map_public_ip_on_launch = false
 
@@ -43,7 +43,7 @@ resource "aws_subnet" "privatesubnet3" {
 
 resource "aws_subnet" "privatesubnet4" {
   vpc_id     = aws_vpc.henryvpc.id
-  cidr_block = "10.0.144.0/24"
+  cidr_block = "10.1.144.0/24"
   availability_zone = "us-east-1b"
   map_public_ip_on_launch = false
 
